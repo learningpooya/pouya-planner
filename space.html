@@ -1676,7 +1676,7 @@
 
     <div id="supabase-auth-bar" style="max-width:640px;margin:0 auto;padding:16px 20px 0;font-family:inherit;">
       <div style="border:1.5px solid var(--line-strong,#a9bfc9);border-radius:8px;padding:14px;">
-        <strong>ورود به Pouya Planner</strong><p style="margin:6px 0;">اول وارد شو، بعد وارد برنامه می‌شوی.</p>
+        <strong>سلام سلام! به Pouya Planner خوش آمدی 🍓✨</strong><p style="margin:6px 0;">بفرما میوه 🍎🍇🍊 راحت بشین، یه حساب بساز یا وارد شو؛ بعدش با هم برنامه‌ریزی می‌کنیم و برنامه‌ات روی هر دستگاهی همراهت می‌ماند.</p>
         <p id="supa-status" style="margin:6px 0;color:var(--muted,#5d7382);font-size:14.5px;">برای ذخیره روی سرور، وارد شو. تا وقتی وارد نشده‌ای، داده فقط در همین مرورگر می‌ماند.</p>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
           <input id="supa-email" type="email" placeholder="ایمیل" autocomplete="email" style="flex:1;min-width:160px;padding:8px;border:1px solid var(--line,#d5e1e6);border-radius:8px;">
@@ -4865,7 +4865,7 @@
       document.body.classList.add("needs-auth"); document.body.classList.remove("authed");
       client.auth.getSession().then(function(s){
         if(s.data.session){ document.body.classList.remove("needs-auth"); document.body.classList.add("authed"); setStatus("وارد شده‌ای؛ ذخیره‌ها با سرور همگام می‌شوند."); }
-        else { setStatus("برای ورود به برنامه، اول با ایمیل و رمز وارد شو یا ثبت‌نام کن."); }
+        else { setStatus("یه حساب بساز یا وارد شو، ما اینجاییم ✨"); }
       });
       client.auth.onAuthStateChange(function(event, session){
         if(session){ document.body.classList.remove("needs-auth"); document.body.classList.add("authed"); }
