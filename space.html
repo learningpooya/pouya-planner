@@ -1693,9 +1693,12 @@
     </div>
 
     <style>
+      /* Login-first gate: nothing of the program shows until signed in. */
+      .wrap{display:none !important;}
+      body.authed .wrap{display:block !important;}
+      body:not(.authed) #supabase-auth-bar{max-width:480px !important;margin:80px auto !important;padding:20px !important;}
+      body:not(.authed) #supabase-auth-bar > div{padding:24px !important;text-align:center;}
       body.needs-auth .wrap{display:none !important;}
-      body.needs-auth #supabase-auth-bar{max-width:480px !important;margin:80px auto !important;padding:20px !important;}
-      body.needs-auth #supabase-auth-bar > div{padding:24px !important;text-align:center;}
     </style>
     <main class="wrap">
       <div class="top-alert">
@@ -4859,14 +4862,14 @@
       document.getElementById("supa-signout").addEventListener("click", async function(){ await client.auth.signOut(); location.reload(); });
       document.getElementById("supa-sync").addEventListener("click", async function(){ var u=await client.auth.getUser(); if(!u.data.user){ setStatus("اول وارد شو."); return; } await pushCloud(); });
       // Login gate: hide the program until the user is signed in.
-      document.body.classList.add("needs-auth");
+      document.body.classList.add("needs-auth"); document.body.classList.remove("authed");
       client.auth.getSession().then(function(s){
-        if(s.data.session){ document.body.classList.remove("needs-auth"); setStatus("وارد شده‌ای؛ ذخیره‌ها با سرور همگام می‌شوند."); }
+        if(s.data.session){ document.body.classList.remove("needs-auth"); document.body.classList.add("authed"); setStatus("وارد شده‌ای؛ ذخیره‌ها با سرور همگام می‌شوند."); }
         else { setStatus("برای ورود به برنامه، اول با ایمیل و رمز وارد شو یا ثبت‌نام کن."); }
       });
       client.auth.onAuthStateChange(function(event, session){
-        if(session){ document.body.classList.remove("needs-auth"); }
-        else { document.body.classList.add("needs-auth"); }
+        if(session){ document.body.classList.remove("needs-auth"); document.body.classList.add("authed"); }
+        else { document.body.classList.add("needs-auth"); document.body.classList.remove("authed"); }
       });
     })();
     </script>
