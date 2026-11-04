@@ -2520,7 +2520,7 @@ body { touch-action: pan-y; }
         </div></div></div>
       </section>
 
-      <section class="item insights-item home-only">
+      <section class="item insights-item settings-only">
         <h2>
           <button class="head" type="button" aria-expanded="false">
             <span class="num">6</span>
@@ -3797,7 +3797,7 @@ body { touch-action: pan-y; }
           if (!wrap0) { return; }
           var chev0 = '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
           wrap0.insertAdjacentHTML("beforeend",
-            '<section class="item insights-item home-only"><h2><button class="head" type="button" aria-expanded="false"><span class="num">۶</span><span class="title">نمودارها و پیشنهادها</span>' + chev0 + '</button></h2>'
+            '<section class="item insights-item settings-only"><h2><button class="head" type="button" aria-expanded="false"><span class="num">۶</span><span class="title">نمودارها و پیشنهادها</span>' + chev0 + '</button></h2>'
             + '<div class="panel" inert><div class="panel-inner"><div class="panel-body">'
             + ''
             + '<div class="goal-hours-row"><span class="gh-ic"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg></span>'
@@ -6613,7 +6613,7 @@ body { touch-action: pan-y; }
           document.querySelectorAll(".part-group").forEach(function (pg) {
             if (pg.querySelector(".week-from-picker")) { refreshSelect(pg.querySelector(".week-from-select")); return; }
             var div = document.createElement("div"); div.className = "week-from-picker";
-            div.innerHTML = '<label>از برنامه هفته (همان لحظه از هفته کم می‌شود):</label><select class="week-from-select"></select>'
+            div.innerHTML = '<label>از برنامه هفته:</label><select class="week-from-select"></select>'
               + '<input class="week-from-pct" type="number" min="5" max="100" value="25" aria-label="درصد از هفته" /><span>٪</span>'
               + '<button class="week-from-add" type="button">افزودن</button>';
             pg.appendChild(div);
@@ -6733,13 +6733,13 @@ body:not(.view-settings) .save-download-btn { display: none!important; }
     <script>
       /* HOME / SETTINGS VIEWS 2026-11-05 */
       (function () {
-        var HOME_NUMS = { "1": 1, "2": 1, "3": 1, "4": 1, "5": 1, "6": 1, "۵": 1, "۶": 1, "۱": 1, "۲": 1, "۳": 1, "۴": 1 };
+        var HOME_NUMS = { "1": 1, "2": 1, "3": 1, "4": 1, "5": 1, "۵": 1, "۱": 1, "۲": 1, "۳": 1, "۴": 1 };
         function classify() {
           document.querySelectorAll("section.item").forEach(function (sec) {
             var numEl = sec.querySelector(".num");
             var n = numEl ? numEl.textContent.trim() : "";
             if (HOME_NUMS[n]) { sec.classList.add("home-only"); sec.classList.remove("settings-only"); }
-            else if (n === "7" || n === "8" || n === "۷" || n === "۸") { sec.classList.add("settings-only"); sec.classList.remove("home-only"); }
+            else if (n === "6" || n === "7" || n === "8" || n === "۶" || n === "۷" || n === "۸") { sec.classList.add("settings-only"); sec.classList.remove("home-only"); }
           });
           document.querySelectorAll(".dash").forEach(function (el) { el.classList.add("settings-only"); el.classList.remove("home-only"); });
           document.querySelectorAll(".appear-bar").forEach(function (el) { el.classList.add("home-only"); el.classList.remove("settings-only"); });
