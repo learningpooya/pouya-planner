@@ -1941,12 +1941,12 @@
       /* TASK TIMER 2026-11-04 v3: timer under each day task, no side panel. */
       body .day-item .task {
         grid-template-columns: 32px minmax(0, 1fr) auto;
-        grid-template-areas: "tick name remove" ". size time" "timer timer timer";
+        grid-template-areas: "tick name remove" ". time time" "timer timer timer";
       }
       @media (max-width: 560px) {
         body .day-item .task {
           grid-template-columns: 32px minmax(0, 1fr) auto 32px;
-          grid-template-areas: "name name name name" "tick size time remove" "timer timer timer timer";
+          grid-template-areas: "name name name name" "tick time time remove" "timer timer timer timer";
         }
       }
       .task-timer { grid-area: timer; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 2px; }
@@ -2169,7 +2169,7 @@
     <div id="supa-drawer"><button id="supa-drawer-close" type="button" style="background:none;border:1px solid #ccc;border-radius:8px;padding:4px 10px;cursor:pointer;">✕ بستن</button><h3 style="margin-top:16px;">حساب من</h3><p style="font-size:14px;">وارد شده با:</p><p id="supa-drawer-email" style="font-size:14px;font-weight:bold;word-break:break-all;">—</p><p id="supa-drawer-sync" style="font-size:13px;color:var(--muted,#5d7382);"></p><button id="supa-drawer-sync-btn" type="button" style="background:none;border:1px solid #ccc;border-radius:8px;padding:6px 12px;cursor:pointer;margin-left:6px;">همگام‌سازی</button><button id="supa-drawer-logout-btn" type="button" style="background:none;border:1px solid #ccc;border-radius:8px;padding:6px 12px;cursor:pointer;">خروج</button></div>
 
 
-    <section class="motivation-box" aria-label="جمله امروز">
+    <section class="motivation-box home-only" aria-label="جمله امروز">
       <p class="motivation-box-title">جمله امروز · <span id="motivation-date">—</span></p>
       <p class="motivation-box-quote" id="motivation-quote">…</p>
     </section>
@@ -2279,24 +2279,18 @@
 
 
         <main class="wrap">
-      <div class="top-alert">
-        <p class="alert-red">برنامه را واقع‌بینانه بنویس، نه خوش‌بینانه.</p>
-        <p class="flex-note">در عصر هوش مصنوعی، نگاه به آینده نمی‌تواند خشک و ثابت باشد؛ همه‌چیز در حال تغییر است. <b>به خودت تعهد بیجا نده</b> — جز به چیزهایی که هیچ‌وقت تغییر نمی‌کنند. کارت را پیش ببر، ولی همیشه <b>آمادهٔ تغییر کردن</b> باش.</p>
-      </div>
+      <div class="view-nav"><button class="view-nav-btn" type="button" data-view="settings" aria-label="تنظیمات">⚙️</button></div>
       <div class="save-bar">
         <div class="save-actions">
           <button class="save-btn" type="button">ذخیره در مرورگر</button>
-          <button class="save-ghost-btn save-download-btn" type="button">دانلود داده‌ها</button>
+          
           <button class="save-ghost-btn save-clear-btn" type="button">پاک کردن ذخیرهٔ مرورگر</button>
         </div>
         </div>
         <p class="save-status" aria-live="polite"></p>
-        <p class="save-note">هر بار که وارد این صفحه می‌شوی و هر تغییری که می‌دهی، خودکار در همین مرورگر ذخیره می‌شود و با باز کردن دوبارهٔ صفحه در همین مرورگر و همین دستگاه برمی‌گردد؛ لازم نیست کاری بکنی. ذخیره فقط همین‌جا می‌ماند؛ اگر داده‌های مرورگر پاک شود از بین می‌رود، پس برای نگه‌داری مطمئن، نسخهٔ دانلودشده را هم نگه دار.</p>
-      </div>
-      <p class="hint">برای دیدن توضیح هر بخش، روی اسمش بزن.</p>
-
+        </div>
       <!-- ۱. جهت های زندگی -->
-      <section class="item">
+      <section class="item home-only">
         <h2>
           <button class="head" type="button" aria-expanded="false">
             <span class="num">1</span>
@@ -2305,7 +2299,6 @@
           </button>
         </h2>
         <div class="panel" inert><div class="panel-inner"><div class="panel-body">
-          <p class="desc">فقط مسیر کلی‌ات را مشخص می‌کند، نه کار روزانه را. چهار جهت اول، هر کدام با برچسب «جهت پیشنهادی پویا» مشخص شده‌اند؛ جهت «سلامت» کاملا ثابت است؛ نه می‌توانی متنش را عوض کنی و نه می‌توانی حذفش کنی. بقیهٔ جهت‌های پیشنهادی را می‌توانی حذف کنی. جهت‌هایی که خودت اضافه می‌کنی این برچسب را ندارند و مثل بقیهٔ بخش‌ها تیک و حذف دارند. جهت‌ها از آن چیزهایی‌اند که ثابت می‌مانند، ولی راه رسیدن به آن‌ها می‌تواند عوض شود.</p>
           <div class="row">
             <label for="f-direction">جهت ۱</label>
             <span class="dir-tag">جهت پیشنهادی پویا</span>
@@ -2337,7 +2330,7 @@
         </div></div></div>
       </section>
 
-      <section class="item">
+      <section class="item home-only">
         <h2>
           <button class="head" type="button" aria-expanded="false">
             <span class="num">2</span>
@@ -2346,8 +2339,6 @@
           </button>
         </h2>
         <div class="panel" inert><div class="panel-inner"><div class="panel-body">
-          <p class="desc">هر هدف حداکثر برای سه ماه آینده است، نه بیشتر؛ با یک نشانهٔ ماهانه و یک مدرک که واقعاً یاد گرفتی. هدف را واقع‌بینانه بنویس، بر اساس وقت و توانی که واقعاً داری، نه بهترین حالت ممکن. اگر در این سه ماه شرایط عوض شد، هدف را بازبینی کن؛ تعهد بیجا به یک هدف ثابت نده. هر هدف تیک و گزینهٔ حذف دارد؛ وقتی به اندازه‌اش رسیدی تیکش را بزن.</p>
-
           <div class="group">
             <div class="group-head"><div class="group-name">هدف ۱</div><div class="group-head-actions"><button class="tick" type="button" aria-pressed="false" aria-label="تیک"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></button><button class="remove-btn" type="button" aria-label="حذف"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div></div>
             <div class="row"><label>هدف</label><input type="text" autocomplete="off" /></div>
@@ -2382,7 +2373,7 @@
         </div></div></div>
       </section>
 
-      <section class="item">
+      <section class="item home-only">
         <h2>
           <button class="head" type="button" aria-expanded="false">
             <span class="num">3</span>
@@ -2391,7 +2382,6 @@
           </button>
         </h2>
         <div class="panel" inert><div class="panel-inner"><div class="panel-body">
-          <p class="desc">اول هفته نوشته می‌شود. فقط کارهای خیلی مهم این‌جا می‌آیند. هدف ساعت مطالعهٔ هفته را هم همین‌جا، اول هفته و واقع‌بینانه بنویس؛ نمره و نمودارهایت در بخش «نمودارها و پیشنهادها» با همین هدف سنجیده می‌شود. کنار هر فعالیت، زمانش به ساعت هم هست؛ همان زمانی را بنویس که در این هفته برای آن فعالیت کنار می‌گذاری.</p>
           <div class="goal-hours-row" style="margin-bottom:16px">
             <span class="gh-ic"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg></span>
             <label for="plan-goal-hours-input">هدف ساعت مطالعهٔ این هفته</label>
@@ -2469,7 +2459,7 @@
         </div></div></div>
       </section>
 
-      <section class="item">
+      <section class="item home-only">
         <h2>
           <button class="head" type="button" aria-expanded="false">
             <span class="num">4</span>
@@ -2478,8 +2468,6 @@
           </button>
         </h2>
         <div class="panel" inert><div class="panel-inner"><div class="panel-body">
-          <p class="desc">روز دو پارت است، به ترتیب صبح و ظهر، بدون ساعت اجباری. کار هر پارت را بنویس و وقتی تمام شد، تیکش را بزن تا خط بخورد. ساعت مطالعهٔ هر پارت را هم بنویس. اول انتخاب کن این روز، کدام روز هفته است؛ با زدن «اتمام و ثبت روز»، ساعت و کارهای روز کامل در کارت همان روز در گزارش کارِ برنامهٔ هفته ثبت می‌شود و فرم روز خالی و تازه می‌شود تا روز بعد را شروع کنی. جمع ساعت مطالعهٔ روز نمی‌تواند بیشتر از ۲۴ ساعت باشد. کنار هر کار در هر دو پارت، اندازهٔ کار و زمانش به دقیقه هم هست؛ دقیقه‌ای که وارد می‌کنی خودکار به ساعت تبدیل می‌شود و در ساعت مطالعهٔ همان پارت می‌نشیند.</p>
-
           <div class="group part-group">
             <div class="group-name">صبح</div>
             <div class="tasks">
@@ -2524,7 +2512,6 @@
           </div>
           <p class="day-registered" hidden aria-live="polite"></p>
           <p class="cap-warning" hidden>جمع ساعت مطالعهٔ روز از ۲۴ ساعت بیشتر شد؛ به سقف ۲۴ ساعت محدود شد.</p>
-          <p class="note"><b>قانون شروع:</b> اگر پارت اول شروع شد، اول کار اولویت ۱ را شروع می‌کنم.</p>
           <button class="add-btn" type="button" data-add="part" data-n="3">
             <span class="plus"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
             افزودن پارت
@@ -2532,7 +2519,7 @@
         </div></div></div>
       </section>
 
-      <section class="item">
+      <section class="item settings-only">
         <h2>
           <button class="head" type="button" aria-expanded="false">
             <span class="num">5</span>
@@ -2554,7 +2541,7 @@
         </div></div></div>
       </section>
 
-      <section class="item insights-item">
+      <section class="item insights-item settings-only">
         <h2>
           <button class="head" type="button" aria-expanded="false">
             <span class="num">6</span>
@@ -2563,7 +2550,6 @@
           </button>
         </h2>
         <div class="panel" inert><div class="panel-inner"><div class="panel-body">
-          <p class="desc">این بخش از همان چیزهایی که خودت ثبت می‌کنی ساخته می‌شود و با هر ثبت تازه، خودش به‌روز می‌شود: نمودار ساعت روزهای این هفته از گزارش کار می‌آید، رتبه‌بندی پارت‌ها از ساعت صبح و ظهر و شبِ همهٔ روزهایی که با «اتمام و ثبت روز» ثبت کرده‌ای، و نمره‌ات با هدفی سنجیده می‌شود که خودت برای ساعت این هفته می‌گذاری.</p>
           <div class="goal-hours-row">
             <span class="gh-ic"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg></span>
             <label for="goal-hours-input">هدف ساعت مطالعهٔ این هفته</label>
@@ -2589,7 +2575,7 @@
         </div></div></div>
       </section>
 
-      <section class="item eval-item">
+      <section class="item eval-item settings-only">
         <h2>
           <button class="head" type="button" aria-expanded="false">
             <span class="num">7</span>
@@ -2598,7 +2584,6 @@
           </button>
         </h2>
         <div class="panel" inert><div class="panel-inner"><div class="panel-body">
-          <p class="desc">بایگانی کارت این‌جاست: هر روزی که در گزارش کار ثبت می‌کنی، خودش در هفتهٔ جاریِ همین بخش هم می‌نشیند. پیش از بستن هر هفته، پیش‌نمایش کامل همان هفته نمایش داده می‌شود و بدون تأیید تو هیچ هفته‌ای بسته و بایگانی نمی‌شود؛ این قانون در هر دو حالت یکسان است: چه خودت دکمهٔ «بایگانی هفته» را بزنی، چه هر هفت روز را با «اتمام و ثبت روز» ثبت کنی و نوبت بایگانی خودکار برسد، در بایگانی خودکار هم اول پیش‌نمایش کامل هفته نمایش داده می‌شود و فقط با تأیید تو هفته بسته و بایگانی می‌شود. با بایگانی شدن هفته، تب برنامه‌ریزی و اطلاعات روزها پاک می‌شود و آن هفته فقط همین‌جا در تاریخچه می‌ماند؛ برنامه‌ریزی و گزارش کار برای هفتهٔ تازه خالی می‌شود. هفته‌ها ماه‌بندی شده‌اند و همه با هم باز نیستند: روی یک ماه بزن تا هفته‌هایش باز شود، و روی هر هفته بزن تا روزهایش را ببینی و ویرایش کنی. با دکمهٔ «افزودن ماه» هم می‌توانی یک ماه تازه با چهار هفتهٔ خالی به بایگانی اضافه کنی.</p>
           <button class="eval-archive-btn" type="button">بایگانی هفتهٔ جاری و شروع هفتهٔ تازه</button>
           <p class="eval-status" aria-live="polite"></p>
           <div class="eval-accordion"></div>
@@ -2609,7 +2594,7 @@
         </div></div></div>
       </section>
 
-      <section class="item">
+      <section class="item settings-only">
         <h2>
           <button class="head" type="button" aria-expanded="false">
             <span class="num">8</span>
@@ -2618,7 +2603,6 @@
           </button>
         </h2>
         <div class="panel" inert><div class="panel-inner"><div class="panel-body">
-          <p class="desc">بندهایی که بالا توضیح داده نشدند.</p>
           <ul class="rules">
             <li>تیک کامل فقط وقتی می‌خورد که اندازه رسیده باشد، ولی مقدار واقعی و درصدش هم ثبت می‌شود.</li>
             <li>حداقل یعنی کوچک‌ترین نسخهٔ مفید، حدود یک‌سوم هدف یا ۲۰ تا ۳۰ دقیقه، و جایگزین دائمی هدف نیست.</li>
@@ -2715,7 +2699,7 @@
       .day-item .task {
         display: grid;
         grid-template-columns: 32px minmax(0, 1fr) auto;
-        grid-template-areas: "tick name remove" ". size time";
+        grid-template-areas: "tick name remove" ". time time";
         gap: 8px 10px;
         align-items: center;
         margin-bottom: 14px;
@@ -2741,7 +2725,7 @@
       @media (max-width: 560px) {
         .day-item .task {
           grid-template-columns: 32px minmax(0, 1fr) auto 32px;
-          grid-template-areas: "name name name name" "tick size time remove";
+          grid-template-areas: "name name name name" "tick time time remove";
           gap: 10px;
         }
         .day-item .task .task-size { width: 100%; max-width: 120px; }
@@ -2916,9 +2900,10 @@
       }
 
       function injectTaskMeasure(taskEl) {
-        if (!taskEl || taskEl.querySelector(".task-size")) { return; }
-        var html = '<input class="task-size" type="text" autocomplete="off" placeholder="اندازه" aria-label="اندازهٔ کار" />'
-          + '<span class="task-time"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><input class="task-time-input" type="text" inputmode="numeric" autocomplete="off" placeholder="دقیقه" aria-label="زمان کار (دقیقه)" /></span>';
+        if (!taskEl) { return; }
+        taskEl.querySelectorAll(".task-size").forEach(function (n) { n.remove(); });
+        if (taskEl.querySelector(".task-time-input")) { return; }
+        var html = '<span class="task-time"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><input class="task-time-input" type="text" inputmode="numeric" autocomplete="off" placeholder="دقیقه" aria-label="زمان کار (دقیقه)" /></span>';
         var rm = taskEl.querySelector(".remove-btn");
         if (rm) { rm.insertAdjacentHTML("beforebegin", html); } else { taskEl.insertAdjacentHTML("beforeend", html); }
       }
@@ -3416,9 +3401,9 @@
         if (!wrap) { return; }
         var chev = '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
         wrap.insertAdjacentHTML("beforeend",
-          '<section class="item eval-item"><h2><button class="head" type="button" aria-expanded="false"><span class="num">۷</span><span class="title">تاریخچه</span>' + chev + '</button></h2>'
+          '<section class="item eval-item settings-only"><h2><button class="head" type="button" aria-expanded="false"><span class="num">۷</span><span class="title">تاریخچه</span>' + chev + '</button></h2>'
           + '<div class="panel" inert><div class="panel-inner"><div class="panel-body">'
-          + '<p class="desc">بایگانی کارت این‌جاست: هر روزی که در گزارش کار ثبت می‌کنی، خودش در هفتهٔ جاریِ همین بخش هم می‌نشیند. پیش از بستن هر هفته، پیش‌نمایش کامل همان هفته نمایش داده می‌شود و بدون تأیید تو هیچ هفته‌ای بسته و بایگانی نمی‌شود؛ حتی در بایگانی خودکار، بعد از ثبت هر هفت روز با «اتمام و ثبت روز»، هم اول پیش‌نمایش کامل هفته نمایش داده می‌شود و فقط با تأیید تو هفته بسته و بایگانی می‌شود. با بایگانی شدن هفته، آن هفته همین‌جا می‌ماند و گزارش کار برای هفتهٔ تازه خالی می‌شود. ده هفتهٔ گذشته این‌جا نگه داشته می‌شود، ماه‌بندی‌شده؛ هر ماه چهار هفته. روی یک ماه بزن تا هفته‌هایش کنارش بیاید، و روی هر هفته بزن تا روزهایش کنار هفته دیده شود.</p>'
+          + ''
           + '<button class="eval-archive-btn" type="button">بایگانی هفتهٔ جاری و شروع هفتهٔ تازه</button><p class="eval-status" aria-live="polite"></p>'
           + '<div class="eval-layout"><div class="eval-col"><div class="eval-col-title">ماه‌ها</div>'
           + '<button class="eval-month-btn active" type="button" data-eval-month="0" aria-pressed="true">ماه ۱<span class="eval-month-meta">هفتهٔ ۱ تا ۴</span></button>'
@@ -3832,9 +3817,9 @@
           if (!wrap0) { return; }
           var chev0 = '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
           wrap0.insertAdjacentHTML("beforeend",
-            '<section class="item insights-item"><h2><button class="head" type="button" aria-expanded="false"><span class="num">۶</span><span class="title">نمودارها و پیشنهادها</span>' + chev0 + '</button></h2>'
+            '<section class="item insights-item settings-only"><h2><button class="head" type="button" aria-expanded="false"><span class="num">۶</span><span class="title">نمودارها و پیشنهادها</span>' + chev0 + '</button></h2>'
             + '<div class="panel" inert><div class="panel-inner"><div class="panel-body">'
-            + '<p class="desc">این بخش از همان چیزهایی که خودت ثبت می‌کنی ساخته می‌شود و با هر ثبت تازه، خودش به‌روز می‌شود: نمودار ساعت روزهای این هفته از گزارش کار می‌آید، رتبه‌بندی پارت‌ها از ساعت صبح و ظهر و شبِ همهٔ روزهایی که با «اتمام و ثبت روز» ثبت کرده‌ای، و نمره‌ات با هدفی سنجیده می‌شود که خودت برای ساعت این هفته می‌گذاری.</p>'
+            + ''
             + '<div class="goal-hours-row"><span class="gh-ic"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg></span>'
             + '<label for="goal-hours-input">هدف ساعت مطالعهٔ این هفته</label>'
             + '<input class="goal-hours-input" id="goal-hours-input" type="text" inputmode="decimal" autocomplete="off" placeholder="مثلاً ۲۰" />'
@@ -6702,9 +6687,10 @@
                 task = src.cloneNode(true);
                 task.classList.remove("done");
                 task.querySelectorAll(".task-timer").forEach(function (n) { n.remove(); });
+                task.querySelectorAll(".task-size").forEach(function (n) { n.remove(); });
               } else {
                 task = document.createElement("div"); task.className = "task";
-                task.innerHTML = '<button class="tick" type="button" aria-pressed="false" aria-label="تیک کار">✓</button><input type="text" autocomplete="off" /><input class="task-size" type="text" autocomplete="off" placeholder="اندازه" aria-label="اندازهٔ کار" /><span class="task-time"><input class="task-time-input" type="text" inputmode="numeric" autocomplete="off" placeholder="دقیقه" aria-label="زمان کار (دقیقه)" /></span><button class="remove-btn" type="button" aria-label="حذف">✕</button>';
+                task.innerHTML = '<button class="tick" type="button" aria-pressed="false" aria-label="تیک کار">✓</button><input type="text" autocomplete="off" /><span class="task-time"><input class="task-time-input" type="text" inputmode="numeric" autocomplete="off" placeholder="دقیقه" aria-label="زمان کار (دقیقه)" /></span><button class="remove-btn" type="button" aria-label="حذف">✕</button>';
               }
               var nameInp = task.querySelector("input:not(.task-size):not(.task-time-input)");
               var sizeInp = task.querySelector(".task-size");
@@ -6718,6 +6704,7 @@
               if (sizeInp) { sizeInp.value = sizeText; }
               if (timeInp && mins > 0) { timeInp.value = String(mins); }
               if (tickBtn) { tickBtn.setAttribute("aria-pressed", "false"); }
+              task.setAttribute("data-week-pct", String(pct));
               tasks.appendChild(task);
               // MOVE: the chosen percentage leaves the week right now, not when the day task is ticked.
               var prog2 = loadProg();
@@ -6744,9 +6731,10 @@
           var task = rm.closest(".task"); if (!task) { return; }
           var pg = task.closest(".part-group"); if (!pg) { return; }
           var nameInp = task.querySelector("input:not(.task-size):not(.task-time-input)");
+          if (!nameInp) { return; }
           var sizeInp = task.querySelector(".task-size");
-          if (!nameInp || !sizeInp) { return; }
-          var name = nameInp.value.trim(), pct = pctFromSize(sizeInp.value);
+          var name = nameInp.value.trim();
+          var pct = task.getAttribute && task.getAttribute("data-week-pct") ? num(task.getAttribute("data-week-pct")) : (sizeInp ? pctFromSize(sizeInp.value) : 0);
           if (!name || !pct) { return; }
           var act2 = null; weekActivities().forEach(function (a) { if (a.name === name) { act2 = a; } });
           if (!act2) { return; }
@@ -6769,6 +6757,63 @@
           if (e.target.closest && e.target.closest(".week-plan-view")) { updateWeekProgress(); refreshAllSelects(); }
         });
         ensurePickers(); updateWeekProgress();
+      })();
+    </script>
+
+
+    <style>
+      /* HOME / SETTINGS VIEWS 2026-11-05: home shows ONLY sections 1-4, nothing else; everything else lives behind the settings icon. */
+      .view-nav { display: flex; margin-bottom: 14px; }
+      .view-nav-btn { margin-inline-start: auto; width: 44px; height: 44px; padding: 0; border-radius: 50%; border: 1.5px solid var(--line-strong, #a9bfc9); background: var(--card, #fff); font-size: 22px; line-height: 1; cursor: pointer; color: var(--ink, #222); }
+      body.view-settings .home-only { display: none !important; }
+      body:not(.view-settings) .settings-only { display: none !important; }
+    </style>
+    <script>
+      /* HOME / SETTINGS VIEWS 2026-11-05 */
+      (function () {
+        var HOME_NUMS = { "1": 1, "2": 1, "3": 1, "4": 1 };
+        function classify() {
+          document.querySelectorAll("section.item").forEach(function (sec) {
+            var numEl = sec.querySelector(".num");
+            var n = numEl ? numEl.textContent.trim() : "";
+            if (HOME_NUMS[n]) { sec.classList.add("home-only"); sec.classList.remove("settings-only"); }
+            else if (n === "5" || n === "6" || n === "7" || n === "8") { sec.classList.add("settings-only"); sec.classList.remove("home-only"); }
+          });
+          document.querySelectorAll(".dash").forEach(function (el) { el.classList.add("settings-only"); el.classList.remove("home-only"); });
+          document.querySelectorAll(".motivation-box").forEach(function (el) { el.classList.add("home-only"); el.classList.remove("settings-only"); });
+          document.querySelectorAll(".appear-bar").forEach(function (el) { el.classList.add("settings-only"); });
+        }
+        function applyView(v) {
+          document.body.classList.toggle("view-settings", v === "settings");
+          try { localStorage.setItem("planner-view-v1", v); } catch (e) {}
+          var btn = document.querySelector(".view-nav-btn");
+          if (btn) {
+            if (v === "settings") { btn.textContent = "\uD83C\uDFE0"; btn.setAttribute("aria-label", "\u0628\u0627\u0632\u06AF\u0634\u062A \u0628\u0647 \u0635\u0641\u062D\u0647 \u0627\u0635\u0644\u06CC"); btn.setAttribute("data-view", "home"); }
+            else { btn.textContent = "\u2699\uFE0F"; btn.setAttribute("aria-label", "\u062A\u0646\u0638\u06CC\u0645\u0627\u062A"); btn.setAttribute("data-view", "settings"); }
+          }
+        }
+        var wrap = document.querySelector(".wrap");
+        var nav = document.querySelector(".view-nav");
+        if (!nav && wrap) {
+          nav = document.createElement("div");
+          nav.className = "view-nav";
+          nav.innerHTML = '<button class="view-nav-btn" type="button" data-view="settings" aria-label="\u062A\u0646\u0638\u06CC\u0645\u0627\u062A">\u2699\uFE0F</button>';
+          wrap.insertBefore(nav, wrap.firstChild);
+        }
+        if (nav) {
+          nav.addEventListener("click", function (e) {
+            var b = e.target.closest ? e.target.closest(".view-nav-btn") : null;
+            if (b) { applyView(b.getAttribute("data-view")); }
+          });
+        }
+        var saved = null; try { saved = localStorage.getItem("planner-view-v1"); } catch (e) {}
+        applyView(saved === "settings" ? "settings" : "home");
+        classify();
+        if (window.MutationObserver && wrap) {
+          var mo = new MutationObserver(function () { classify(); });
+          mo.observe(wrap, { childList: true });
+        }
+        window.addEventListener("load", classify);
       })();
     </script>
 
