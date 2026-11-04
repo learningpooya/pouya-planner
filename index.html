@@ -6679,7 +6679,17 @@
             var sel = div.querySelector(".week-from-select");
             sel.addEventListener("focus", function () { refreshSelect(sel); });
             refreshSelect(sel);
-            div.querySelector(".week-from-add").addEventListener("click", function () {
+            div.querySelector(".week-from-add").addEventListener("click", function (ev) {
+              // Re-resolve everything from the clicked button: the picker may have
+              // been rebuilt since creation, and a stale closure would append to a
+              // detached part-group (invisible, silent no-op).
+              var btn = ev.currentTarget || ev.target;
+              var div2 = btn.closest ? btn.closest(".week-from-picker") : null;
+              var pg2 = btn.closest ? btn.closest(".part-group") : null;
+              var sel2 = div2 ? div2.querySelector(".week-from-select") : null;
+              if (div2) { div = div2; }
+              if (pg2) { pg = pg2; }
+              if (sel2) { sel = sel2; }
               var name = sel.value; if (!name) { return; }
               var pctInp = div.querySelector(".week-from-pct");
               var pct = Math.min(100, Math.max(5, num(pctInp.value) || 25));
@@ -6723,10 +6733,11 @@
             });
           });
         }
+        // Capture listener: ONLY the delete-revert. It must run before the main
+        // handler removes the task, so the task is still inside its part-group.
+        // It deliberately does NOT refresh selects or progress here: refreshing
+        // before the Add button's own handler runs was suspected of breaking Add.
         document.addEventListener("click", function (e) {
-          ensurePickers(); refreshAllSelects(); updateWeekProgress();
-          // Capture phase: runs before the main handler removes the task,
-          // so the task is still inside its part-group when we read it.
           // If a week-derived day task is deleted, its percentage returns to the week.
           var rm = e.target.closest ? e.target.closest(".remove-btn") : null;
           if (!rm) { return; }
@@ -6749,6 +6760,11 @@
           updateWeekProgress();
           refreshAllSelects();
         }, true);
+        // Bubble listener: refresh pickers and progress AFTER any button's own
+        // handler (including Add) has run, so the next open shows a fresh list.
+        document.addEventListener("click", function (e) {
+          ensurePickers(); refreshAllSelects(); updateWeekProgress();
+        });
         document.addEventListener("input", function (e) {
           if (e.target.closest && e.target.closest(".week-plan-view")) { updateWeekProgress(); refreshAllSelects(); }
         });
