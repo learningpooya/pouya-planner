@@ -1934,6 +1934,7 @@
       .week-progress { font-size: 13px; color: var(--muted, #5d7382); margin-top: 6px; }
       .week-progress-bar { height: 6px; background: var(--line, #d5e1e6); border-radius: 999px; overflow: hidden; margin-top: 4px; }
       .week-progress-bar i { display: block; height: 100%; background: var(--accent, #2f7a5c); }
+      .week-plan-view .group.week-transferred { display: none; }
       /* IDEA STAR 2026-11-05 */
       .ideas-list .idea-star { background: none; border: none; cursor: pointer; font: inherit; font-size: 17px; padding: 0 2px; line-height: 1; }
       .ideas-list li.pinned .idea-text { font-weight: 700; }
@@ -2196,8 +2197,9 @@
 
     <style>
       #giga-wheel-open-btn { display: none; position: fixed; z-index: 2000; border: 1.5px solid #d4af37; background: linear-gradient(135deg, #ffd700, #c9a227); color: #000; font: inherit; font-weight: 800; border-radius: 10px; cursor: pointer; box-shadow: 0 6px 16px rgba(212,175,55,.35); }
-      #giga-wheel-open-btn { bottom: 76px; right: 20px; padding: 10px 16px; z-index: 5000; }
+      #giga-wheel-open-btn { bottom: 20px; left: 20px; right: auto; padding: 11px 18px; z-index: 5000; }
       :root[data-theme="gigachad"] #giga-wheel-open-btn { display: block; }
+      :root[data-theme="gigachad"] #wheel-open-btn { display: none !important; }
       #giga-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.75); z-index: 3000; display: grid; place-items: center; padding: 16px; box-sizing: border-box; }
       #giga-overlay[hidden] { display: none; }
       .giga-modal { width: 100%; max-width: 420px; max-height: 92vh; overflow: auto; background: #161513; color: #f5f0e6; border: 1.5px solid #d4af37; border-radius: 12px; padding: 18px; box-sizing: border-box; text-align: center; position: relative; }
@@ -4329,9 +4331,7 @@
           document.querySelectorAll(".seg-btn").forEach(function (b) {
             b.setAttribute("aria-pressed", b.getAttribute("data-mode") === curMode ? "true" : "false");
           });
-          document.querySelectorAll(".swatch").forEach(function (b) {
-            b.setAttribute("aria-pressed", b.getAttribute("data-accent-val") === curAccent ? "true" : "false");
-          });
+
         }
 
         var wrap = document.querySelector(".wrap");
@@ -4351,13 +4351,6 @@
             + '<button class="seg-btn" type="button" data-mode="midnight" aria-pressed="false">نیمه‌شب 🌙</button>'
             + '<button class="seg-btn" type="button" data-mode="fernwood" aria-pressed="false">فرن‌وود 🌿</button>'
             + '</span>'
-            + '<span class="appear-label" id="accent-label">رنگ تأکیدی</span>'
-            + '<span class="swatches" role="group" aria-labelledby="accent-label">'
-            + '<button class="swatch" type="button" data-accent-val="blue" aria-pressed="false" aria-label="آبی" style="background:#3d6f8e"></button>'
-            + '<button class="swatch" type="button" data-accent-val="green" aria-pressed="false" aria-label="سبز" style="background:#2f7a5c"></button>'
-            + '<button class="swatch" type="button" data-accent-val="teal" aria-pressed="false" aria-label="فیروزه‌ای" style="background:#0e7a72"></button>'
-            + '<button class="swatch" type="button" data-accent-val="gold" aria-pressed="false" aria-label="طلایی" style="background:#a97b12"></button>'
-            + '<button class="swatch" type="button" data-accent-val="violet" aria-pressed="false" aria-label="بنفش" style="background:#6a5aa8"></button>'
             + '</span>';
           wrap.insertBefore(bar, wrap.firstChild);
           bar.addEventListener("click", function (e) {
@@ -4368,12 +4361,7 @@
               applyAppearance();
               return;
             }
-            var sw = e.target.closest ? e.target.closest(".swatch") : null;
-            if (sw) {
-              curAccent = sw.getAttribute("data-accent-val") || "blue";
-              storePrefs({ mode: curMode, accent: curAccent });
-              applyAppearance();
-            }
+
           });
           // «حالت تمرکز امروز» را از دکمه‌های داشبورد بیاور کنار «ظاهر برنامه»،
           // داخل همین نوار؛ جابه‌جایی گره، شنوندهٔ کلیک خودش را نگه می‌دارد و
@@ -6648,6 +6636,8 @@
           var prog = loadProg();
           weekActivities().forEach(function (a) {
             var done = Math.min(100, Math.max(0, prog[a.name] || 0));
+            if (done >= 100) { a.group.classList.add("week-transferred"); }
+            else { a.group.classList.remove("week-transferred"); }
             var div = a.group.querySelector(".week-progress");
             if (!div) {
               div = document.createElement("div"); div.className = "week-progress";
@@ -6675,9 +6665,12 @@
           }
           if (prev) { sel.value = prev; }
         }
+        function refreshAllSelects() {
+          document.querySelectorAll(".week-from-select").forEach(function (s2) { refreshSelect(s2); });
+        }
         function ensurePickers() {
           document.querySelectorAll(".part-group").forEach(function (pg) {
-            if (pg.querySelector(".week-from-picker")) { return; }
+            if (pg.querySelector(".week-from-picker")) { refreshSelect(pg.querySelector(".week-from-select")); return; }
             var div = document.createElement("div"); div.className = "week-from-picker";
             div.innerHTML = '<label>از برنامه هفته (همان لحظه از هفته کم می‌شود):</label><select class="week-from-select"></select>'
               + '<input class="week-from-pct" type="number" min="5" max="100" value="25" aria-label="درصد از هفته" /><span>٪</span>'
@@ -6721,9 +6714,8 @@
               prog2[act.name] = Math.min(100, (prog2[act.name] || 0) + pct);
               saveProg(prog2);
               if (prog2[act.name] >= 100 && act.group) {
-                act.group.classList.add("done");
                 var gt = act.group.querySelector(".tick");
-                if (gt) { gt.setAttribute("aria-pressed", "true"); }
+                if (gt && !act.group.classList.contains("done")) { gt.click(); }
               }
               updateWeekProgress();
               document.querySelectorAll(".week-from-select").forEach(function (s2) { refreshSelect(s2); });
@@ -6732,7 +6724,9 @@
           });
         }
         document.addEventListener("click", function (e) {
-          ensurePickers();
+          ensurePickers(); refreshAllSelects(); updateWeekProgress();
+          // Capture phase: runs before the main handler removes the task,
+          // so the task is still inside its part-group when we read it.
           // If a week-derived day task is deleted, its percentage returns to the week.
           var rm = e.target.closest ? e.target.closest(".remove-btn") : null;
           if (!rm) { return; }
@@ -6748,16 +6742,15 @@
           var prog = loadProg();
           prog[name] = Math.max(0, (prog[name] || 0) - pct);
           saveProg(prog);
-          if (prog[name] < 100 && act2.group) {
-            act2.group.classList.remove("done");
+          if (prog[name] < 100 && act2.group && act2.group.classList.contains("done")) {
             var gt2 = act2.group.querySelector(".tick");
-            if (gt2) { gt2.setAttribute("aria-pressed", "false"); }
+            if (gt2) { gt2.click(); }
           }
           updateWeekProgress();
-          document.querySelectorAll(".week-from-select").forEach(function (s2) { refreshSelect(s2); });
-        });
+          refreshAllSelects();
+        }, true);
         document.addEventListener("input", function (e) {
-          if (e.target.closest && e.target.closest(".week-plan-view")) { updateWeekProgress(); }
+          if (e.target.closest && e.target.closest(".week-plan-view")) { updateWeekProgress(); refreshAllSelects(); }
         });
         ensurePickers(); updateWeekProgress();
       })();
