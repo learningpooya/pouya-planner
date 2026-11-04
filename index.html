@@ -2044,8 +2044,8 @@
       /* WHEEL POPUP 2026-11-04: floating button opens the wheel modal, outside .wrap. */
       .wheel-open-btn {
         position: fixed; bottom: 20px; left: 20px; z-index: 2000;
-        padding: 11px 18px; border-radius: 999px; border: none; cursor: pointer;
-        background: var(--accent-deep, #4a718c); color: #f4f8f6; font: inherit; font-weight: 800;
+        padding: 9px 13px; border-radius: 999px; border: none; cursor: pointer;
+        background: var(--accent-deep, #4a718c); color: #f4f8f6; font: inherit; font-size: 14px; font-weight: 800;
         box-shadow: 0 6px 18px rgba(0,0,0,.25);
       }
       .wheel-overlay {
@@ -2117,9 +2117,9 @@
       /* IDEAS ICON 2026-11-04: ideas checklist has its own icon beside the wheel icon, not inside the wheel popup. */
       .wheel-modal { max-width: 360px; }
       .ideas-open-btn {
-        position: fixed; bottom: 20px; left: 206px; z-index: 2000;
-        padding: 11px 16px; border-radius: 999px; border: none; cursor: pointer;
-        background: var(--accent-deep, #4a718c); color: #f4f8f6; font: inherit; font-weight: 800;
+        position: fixed; bottom: 20px; left: 180px; z-index: 2000;
+        padding: 9px 13px; border-radius: 999px; border: none; cursor: pointer;
+        background: var(--accent-deep, #4a718c); color: #f4f8f6; font: inherit; font-size: 14px; font-weight: 800;
         box-shadow: 0 6px 18px rgba(0,0,0,.25);
       }
       .ideas-overlay {
@@ -2137,7 +2137,7 @@
         background: none; border: 1px solid #ccc; border-radius: 8px; padding: 4px 10px; cursor: pointer;
         color: var(--ink, #222); font: inherit;
       }
-      @media (max-width: 420px) { .ideas-open-btn { left: 188px; padding: 11px 12px; } }
+      @media (max-width: 420px) { .ideas-open-btn { left: 180px; padding: 9px 13px; font-size: 14px; } }
     </style>
 
   </head>
@@ -2169,10 +2169,7 @@
     <div id="supa-drawer"><button id="supa-drawer-close" type="button" style="background:none;border:1px solid #ccc;border-radius:8px;padding:4px 10px;cursor:pointer;">✕ بستن</button><h3 style="margin-top:16px;">حساب من</h3><p style="font-size:14px;">وارد شده با:</p><p id="supa-drawer-email" style="font-size:14px;font-weight:bold;word-break:break-all;">—</p><p id="supa-drawer-sync" style="font-size:13px;color:var(--muted,#5d7382);"></p><button id="supa-drawer-sync-btn" type="button" style="background:none;border:1px solid #ccc;border-radius:8px;padding:6px 12px;cursor:pointer;margin-left:6px;">همگام‌سازی</button><button id="supa-drawer-logout-btn" type="button" style="background:none;border:1px solid #ccc;border-radius:8px;padding:6px 12px;cursor:pointer;">خروج</button></div>
 
 
-    <section class="motivation-box settings-only" aria-label="جمله امروز">
-      <p class="motivation-box-title">جمله امروز · <span id="motivation-date">—</span></p>
-      <p class="motivation-box-quote" id="motivation-quote">…</p>
-    </section>
+    
 
     <button id="wheel-open-btn" class="wheel-open-btn" type="button">🎡 گردونه تنبلی</button>
         <div id="wheel-overlay" class="wheel-overlay" hidden>
@@ -2197,7 +2194,7 @@
 
     <style>
       #giga-wheel-open-btn { display: none; position: fixed; z-index: 2000; border: 1.5px solid #d4af37; background: linear-gradient(135deg, #ffd700, #c9a227); color: #000; font: inherit; font-weight: 800; border-radius: 10px; cursor: pointer; box-shadow: 0 6px 16px rgba(212,175,55,.35); }
-      #giga-wheel-open-btn { bottom: 20px; left: 20px; right: auto; padding: 11px 18px; z-index: 5000; }
+      #giga-wheel-open-btn { bottom: 20px; left: 12px; right: auto; padding: 9px 13px; font-size: 14px; z-index: 5000; }
       :root[data-theme="gigachad"] #giga-wheel-open-btn { display: block; }
       :root[data-theme="gigachad"] #wheel-open-btn { display: none !important; }
       #giga-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.75); z-index: 3000; display: grid; place-items: center; padding: 16px; box-sizing: border-box; }
@@ -4337,7 +4334,7 @@
             + '<button class="seg-btn" type="button" data-mode="fernwood" aria-pressed="false">فرن‌وود 🌿</button>'
             + '</span>'
             + '</span>';
-          wrap.insertBefore(bar, wrap.firstChild);
+          wrap.appendChild(bar);
           bar.addEventListener("click", function (e) {
             var segBtn = e.target.closest ? e.target.closest(".seg-btn") : null;
             if (segBtn) {
@@ -6019,22 +6016,7 @@
     </script>
 
   
-    <script>
-      // DAILY MOTIVATION 2026-11-04: one serious sentence per day, Tehran date, cycles every 31 days.
-      (function () {
-        var quotes = ["اگه حواست به خودت نباشه، واسه هیچکس مهم نیستی؛ اول خودتو جدی بگیر، اره مشتی.", "هیچکس نمیاد تو رو نجات بده؛ برنامه امروزت همون نجاته، اره جیگر.", "روزی که کارت رو سپردی به «فردا»، فردا هم همون بهونه رو تکرار می‌کنه، اره خوشگله.", "درس نخوندن امروز، بدهی‌ایه که فردا با بهره پسش میدی، اره گوگولی.", "اگه واسه خودت وقت نذاری، وقتتو بقیه واسه خودشون می‌گیرن، اره سلطان.", "قدرت از جایی شروع میشه که کاری رو که دوست نداری، درست انجامش میدی، اره ستون.", "کسی که به خودش دروغ میگه، از همه راحت‌تر شکست می‌خوره، اره رفیق.", "یادت باشه هنوز ایرانی هستی؛ دور بودن، ریشه‌تو پاک نمی‌کنه، مگه اینکه خودت ولش کنی، اره قهرمان.", "تو کشور غریب، احترام رو نمیدن؛ با کار و شخصیتت می‌گیریش، اره داداش.", "موفقیت یه اتفاق نیست؛ مجموع روزاییه که کسی ندیدت، اره گل.", "اگه بدنت رو رها کنی، ذهنت هم جایی واسه وایستادن نداره، اره شیر.", "پول، آزادی می‌خره؛ ولی آزادی بدون نظم، فقط یه زندان بزرگ‌تره، اره رئیس.", "مقایسه با بقیه، سریع‌ترین راه واسه خراب کردن برنامه خودته، اره پهلوون.", "کسی که هدفش روشن نیست، هر بادی اون رو به یه سمت می‌بره، اره نابغه.", "سختی امروز، قیمت زندگی‌ایه که میخوای؛ ارزون‌ترش نمیشه، اره استاد.", "دوست واقعی کسیه که وقتی پیشرفت می‌کنی، کوچیک نشه، اره جنگجو.", "اگه امروز فقط یه کار مهم رو تموم کنی، روزت باخته نیست، اره عزیز.", "هوش مصنوعی ابزاره؛ کسی که فکر نمی‌کنه، با بهترین ابزار هم عقب می‌مونه، اره خفن.", "گذشته‌تو انکار نکن؛ از همون‌جایی که اومدی، قدرتتو بگیر، اره باحال.", "ایرانی بودن یعنی با دست خالی هم راه ساختن؛ اینو تو غربت فراموش نکن، اره تاج سر.", "هر روزی که بدون تمرین انگلیسی بگذره، یه روز دیرتر به جایی می‌رسی که میخوای، اره نور چشم.", "نظم، انگیزه‌ایه که وقتی حسش نیست، باز هم کار می‌کنه، اره ماه.", "اگه به خودت قول میدی و می‌شکنیش، کم‌کم به خودت هم اعتماد نمی‌کنی، اره ستاره.", "زندگی به کسی که فقط تماشا می‌کنه، چیزی نمیده، اره شاه.", "کار نیمه‌تموم، از کار نکردن هم سنگین‌تره؛ تمومش کن، اره فرمانده.", "تو آمریکا زندگی کردن، ایرانی بودنت رو کم نمی‌کنه؛ فقط امتحانش رو سخت‌تر می‌کنه، اره غول.", "کسی که واسه آینده‌ش برنامه نداره، واسه آینده بقیه کار می‌کنه، اره اسطوره.", "درد تمرین، موقته؛ حسرت نکردنش، هر روز تکرار میشه، اره یکه‌تاز.", "اگه میخوای مستقل باشی، باس اول بتونی رو خودت حساب کنی، اره بی‌نظیر.", "امروزت رو جدی بگیر؛ همون امروزایی که ساده به نظر می‌رسن، آینده‌تو می‌سازن، اره کار درست.", "هیچ بهونه‌ای به اندازه یه روز کار درست، صدات رو بلند نمی‌کنه، اره دمت گرم."];
-        try {
-          var parts = new Intl.DateTimeFormat("en", { timeZone: "Asia/Tehran", year: "numeric", month: "numeric", day: "numeric" }).formatToParts(new Date());
-          var y = 0, m = 0, d = 0;
-          parts.forEach(function (pt) { if (pt.type === "year") { y = Number(pt.value); } if (pt.type === "month") { m = Number(pt.value); } if (pt.type === "day") { d = Number(pt.value); } });
-          var dayOfYear = Math.floor((Date.UTC(y, m - 1, d) - Date.UTC(y, 0, 1)) / 86400000) + 1;
-          var q = document.getElementById("motivation-quote");
-          var dt = document.getElementById("motivation-date");
-          if (q) { q.textContent = quotes[(dayOfYear - 1) % quotes.length]; }
-          if (dt) { dt.textContent = new Intl.DateTimeFormat("fa-IR", { timeZone: "Asia/Tehran", weekday: "long", day: "numeric", month: "long" }).format(new Date()); }
-        } catch (e) {}
-      })();
-    </script>
+    
 
   
     <script>
@@ -6764,7 +6746,8 @@
     <style>
       /* HOME / SETTINGS VIEWS 2026-11-05: home shows ONLY sections 1-4, nothing else; everything else lives behind the settings icon. */
       .view-nav { display: flex; margin-bottom: 14px; }
-      .view-nav-btn { margin-inline-start: auto; width: 44px; height: 44px; padding: 0; border-radius: 50%; border: 1.5px solid var(--line-strong, #a9bfc9); background: var(--card, #fff); font-size: 22px; line-height: 1; cursor: pointer; color: var(--ink, #222); }
+      .view-nav-btn { margin-inline-end: auto; width: 44px; height: 44px; padding: 0; border-radius: 50%; border: 1.5px solid var(--line-strong, #a9bfc9); background: var(--card, #fff); font-size: 22px; line-height: 1; cursor: pointer; color: var(--ink, #222); }
+body:not(.view-settings) .save-download-btn { display: none!important; }
       body.view-settings .home-only { display: none !important; }
       body:not(.view-settings) .settings-only { display: none !important; }
     </style>
@@ -6780,8 +6763,8 @@
             else if (n === "7" || n === "8" || n === "۷" || n === "۸") { sec.classList.add("settings-only"); sec.classList.remove("home-only"); }
           });
           document.querySelectorAll(".dash").forEach(function (el) { el.classList.add("settings-only"); el.classList.remove("home-only"); });
-          document.querySelectorAll(".motivation-box").forEach(function (el) { el.classList.add("settings-only"); el.classList.remove("home-only"); });
           document.querySelectorAll(".appear-bar").forEach(function (el) { el.classList.add("home-only"); el.classList.remove("settings-only"); });
+          document.querySelectorAll(".save-download-btn").forEach(function (el) { el.classList.add("settings-only"); el.classList.remove("home-only"); });
         }
         function applyView(v) {
           document.body.classList.toggle("view-settings", v === "settings");
