@@ -70,7 +70,6 @@
         color: var(--muted);
         font-size: 14.5px;
       }
-      .top-alert { margin: 0 0 22px; }
       .save-bar .save-download-btn { background: var(--accent); color: #fff; border: none; padding: 10px 18px; border-radius: 12px; font-weight: 800; cursor: pointer; }
       .dir-fixed input { background: transparent; border: none; cursor: default; font-weight: 800; }
       .dir-guard-btn { align-self: center; background: var(--card); border: 1px solid var(--line-strong); color: var(--muted); border-radius: 50%; width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; flex: none; }
@@ -127,15 +126,7 @@
         line-height: 1.85;
         color: var(--muted);
       }
-      .alert-red {
-        margin: 0 0 10px;
-        font-size: 27px;
-        line-height: 1.6;
-        font-weight: 700;
-        color: #c81e1e;
-      }
       @media (prefers-color-scheme: dark) {
-        .alert-red { color: #ff7a6e; }
       }
       .flex-note {
         margin: 0;
@@ -720,6 +711,7 @@ body { touch-action: pan-y; }
 .seg { flex-wrap: wrap; max-width: 100%; }
 .appear-bar { max-width: 100%; box-sizing: border-box; }
 #giga-wheel-open-btn, #ideas-open-btn, #wheel-open-btn { max-width: calc(50vw - 14px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.head-line { display: inline-block; max-width: 160px; font-size: 12px; font-weight: 400; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; vertical-align: middle; margin-inline-start: 8px; }
 </style>
     <style>
       /* ===== ارتقای بصری و آرام‌سازی: پالت عمیق‌تر و مات، کارت‌ها، داشبورد هفته ===== */
@@ -771,19 +763,8 @@ body { touch-action: pan-y; }
       }
       .wrap { max-width: 700px; padding-top: 22px; }
       /* کارت هشدار واقع‌بینی */
-      .top-alert {
-        background: var(--card);
-        border: 1px solid var(--line);
-        border-inline-start: 6px solid #c81e1e;
-        border-radius: 18px;
-        padding: 18px 20px;
-        box-shadow: var(--shadow);
-        margin-bottom: 16px;
-      }
       @media (prefers-color-scheme: dark) {
-        .top-alert { border-inline-start-color: #ff7a6e; }
       }
-      .alert-red { font-weight: 900; letter-spacing: -.2px; }
       /* نوار ذخیره به شکل کارت */
       .save-bar {
         background: var(--card);
@@ -1287,8 +1268,6 @@ body { touch-action: pan-y; }
         }
         :root[data-theme="light"] .save-btn,
         :root[data-theme="light"] .eval-archive-btn { color: #f4f8f6; }
-        :root[data-theme="light"] .alert-red { color: #c81e1e; }
-        :root[data-theme="light"] .top-alert { border-inline-start-color: #c81e1e; }
         :root[data-theme="light"] .item.open .num { color: #fff; }
         :root[data-theme="light"] .week-tab.active { color: #fff; }
         :root[data-theme="light"] .task.done .tick { color: #f4f8f6; }
@@ -1296,8 +1275,6 @@ body { touch-action: pan-y; }
       /* جزئیات کامپوننتی حالت تیرهٔ دستی (همتای قانون‌های رسانهٔ سیستم) */
       :root[data-theme="dark"] .save-btn,
       :root[data-theme="dark"] .eval-archive-btn { color: var(--bg); }
-      :root[data-theme="dark"] .alert-red { color: #ff7a6e; }
-      :root[data-theme="dark"] .top-alert { border-inline-start-color: #ff7a6e; }
       :root[data-theme="dark"] .item.open .num { color: #000000; }
       :root[data-theme="dark"] .week-tab.active { color: #000000; }
       :root[data-theme="dark"] .task.done .tick { color: var(--bg); }
@@ -2294,6 +2271,7 @@ body { touch-action: pan-y; }
         <h2>
           <button class="head" type="button" aria-expanded="false">
             <span class="num">1</span>
+            <span class="head-line">فقط مسیر کلی، نه کار روزانه</span>
             <span class="title">جهت های زندگی</span>
             <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
           </button>
@@ -2334,6 +2312,7 @@ body { touch-action: pan-y; }
         <h2>
           <button class="head" type="button" aria-expanded="false">
             <span class="num">2</span>
+            <span class="head-line">هر هدف حداکثر سه ماه</span>
             <span class="title">هدف‌های میان‌مدت</span>
             <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
           </button>
@@ -2377,6 +2356,7 @@ body { touch-action: pan-y; }
         <h2>
           <button class="head" type="button" aria-expanded="false">
             <span class="num">3</span>
+            <span class="head-line">اول هفته، فقط کارهای خیلی مهم</span>
             <span class="title">برنامهٔ هفته</span>
             <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
           </button>
@@ -2462,6 +2442,7 @@ body { touch-action: pan-y; }
         <h2>
           <button class="head" type="button" aria-expanded="false">
             <span class="num">4</span>
+            <span class="head-line">دو پارت: صبح و ظهر</span>
             <span class="title">روز</span>
             <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
           </button>
@@ -2522,6 +2503,7 @@ body { touch-action: pan-y; }
         <h2>
           <button class="head" type="button" aria-expanded="false">
             <span class="num">5</span>
+            <span class="head-line">۲۵ تا ۴۵ دقیقه، فقط همین سه خط</span>
             <span class="title">آخر هفته</span>
             <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
           </button>
@@ -2542,6 +2524,7 @@ body { touch-action: pan-y; }
         <h2>
           <button class="head" type="button" aria-expanded="false">
             <span class="num">6</span>
+            <span class="head-line">خودکار از ثبت‌های تو به‌روز می‌شود</span>
             <span class="title">نمودارها و پیشنهادها</span>
             <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
           </button>
@@ -5281,20 +5264,12 @@ body { touch-action: pan-y; }
       .entry-toggle[aria-expanded="true"] .chev { transform: rotate(180deg); color: var(--accent); }
       .entry-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
       /* هشدار واقع‌بینی: فقط تیتر دیده می‌شود، متن کامل پشت «توضیح» */
-      .top-alert {
-        padding: 11px 16px;
-        border-radius: 14px;
-        border-inline-start-width: 3px;
-        box-shadow: none;
-        margin-bottom: 12px;
-      }
       .alert-head {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 10px;
       }
-      .alert-red { margin: 0; font-size: 16.5px; }
       .alert-more .flex-note { margin-top: 8px; font-size: 14.5px; color: var(--muted); }
       /* نوار ذخیره: یک ردیف آرام؛ دکمه‌ها و مرکز اطلاعات پشت «مدیریت اطلاعات» */
       .save-bar {
@@ -5332,7 +5307,6 @@ body { touch-action: pan-y; }
       .hint { font-size: 13px; margin-bottom: 10px; }
       @media (max-width: 560px) {
         .dash { padding: 14px; }
-        .alert-red { font-size: 15.5px; }
       }
       @media (prefers-reduced-motion: reduce) {
         .entry-toggle .chev, .entry-dash-toggle .chev { transition: none; }
@@ -6646,17 +6620,17 @@ body { touch-action: pan-y; }
             var sel = div.querySelector(".week-from-select");
             sel.addEventListener("focus", function () { refreshSelect(sel); });
             refreshSelect(sel);
-            div.querySelector(".week-from-add").addEventListener("click", function (ev) {
+            
+          });
+        }
+        function handleWeekAdd(btn) {
               // Re-resolve everything from the clicked button: the picker may have
               // been rebuilt since creation, and a stale closure would append to a
               // detached part-group (invisible, silent no-op).
-              var btn = ev.currentTarget || ev.target;
-              var div2 = btn.closest ? btn.closest(".week-from-picker") : null;
-              var pg2 = btn.closest ? btn.closest(".part-group") : null;
-              var sel2 = div2 ? div2.querySelector(".week-from-select") : null;
-              if (div2) { div = div2; }
-              if (pg2) { pg = pg2; }
-              if (sel2) { sel = sel2; }
+              var div = btn.closest ? btn.closest(".week-from-picker") : null;
+              var pg = btn.closest ? btn.closest(".part-group") : null;
+              var sel = div ? div.querySelector(".week-from-select") : null;
+              if (!div || !pg || !sel) { return; }
               var name = sel.value; if (!name) { return; }
               var pctInp = div.querySelector(".week-from-pct");
               var pct = Math.min(100, Math.max(5, num(pctInp.value) || 25));
@@ -6699,9 +6673,14 @@ body { touch-action: pan-y; }
               updateWeekProgress();
               document.querySelectorAll(".week-from-select").forEach(function (s2) { refreshSelect(s2); });
               try { if (typeof scheduleSave === "function") { scheduleSave(); } } catch (e) {}
-            });
-          });
-        }
+                    }
+        // Delegated Add: catches clicks even if the picker button element was
+        // replaced after creation (which silently drops per-button listeners).
+        document.addEventListener("click", function (e) {
+          var btn = e.target.closest ? e.target.closest(".week-from-add") : null;
+          if (!btn) { return; }
+          handleWeekAdd(btn);
+        });
         // Capture listener: ONLY the delete-revert. It must run before the main
         // handler removes the task, so the task is still inside its part-group.
         // It deliberately does NOT refresh selects or progress here: refreshing
